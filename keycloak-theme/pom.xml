@@ -15,23 +15,17 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.keycloak</groupId>
+    <groupId>com.prime_sign</groupId>
     <artifactId>keycloak-admin-ui</artifactId>
-    <version>19.0.1</version>
+    <version>19.0.1-SNAPSHOT</version>
     <name>Keycloak Administration UI</name>
     <description>Keycloak Administration UI</description>
 
     <properties>
-        <jboss.repo.nexusUrl>https://s01.oss.sonatype.org/</jboss.repo.nexusUrl>
-        <jboss.releases.repo.id>jboss-releases-repository</jboss.releases.repo.id>
-        <jboss.releases.repo.url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</jboss.releases.repo.url>
-        <jboss.snapshots.repo.id>jboss-snapshots-repository</jboss.snapshots.repo.id>
-        <jboss.snapshots.repo.url>https://s01.oss.sonatype.org/content/repositories/snapshots/</jboss.snapshots.repo.url>
-
-        <nexus.staging.plugin.version>1.6.13</nexus.staging.plugin.version>
     </properties>
 
     <licenses>
@@ -45,9 +39,9 @@
     <url>http://keycloak.org</url>
 
     <scm>
-        <connection>scm:git:git://github.com/keycloak/keycloak-admin-ui.git</connection>
-        <developerConnection>scm:git:git@github.com:keycloak/keycloak-admin-ui.git</developerConnection>
-        <url>https://github.com/keycloak/keycloak-admin-ui/tree/master/</url>
+        <connection>scm:git:git://github.com/primesign/keycloak-ui.git</connection>
+        <developerConnection>scm:git:git@github.com:primesign/keycloak-ui.git</developerConnection>
+        <url>https://github.com/primesign/keycloak-ui/tree/main/</url>
     </scm>
 
     <developers>
@@ -59,15 +53,10 @@
 
     <distributionManagement>
         <repository>
-            <id>${jboss.releases.repo.id}</id>
-            <name>JBoss Releases Repository</name>
-            <url>${jboss.releases.repo.url}</url>
+            <id>github</id>
+            <name>PrimeSign</name>
+            <url>https://maven.pkg.github.com/primesign/keycloak-ui</url>
         </repository>
-        <snapshotRepository>
-            <id>${jboss.snapshots.repo.id}</id>
-            <name>JBoss Snapshots Repository</name>
-            <url>${jboss.snapshots.repo.url}</url>
-        </snapshotRepository>
     </distributionManagement>
 
     <profiles>
@@ -103,17 +92,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.sonatype.plugins</groupId>
-                <artifactId>nexus-staging-maven-plugin</artifactId>
-                <version>${nexus.staging.plugin.version}</version>
-                <extensions>true</extensions>
-                <configuration>
-                    <serverId>${jboss.releases.repo.id}</serverId>
-                    <nexusUrl>${jboss.repo.nexusUrl}</nexusUrl>
-                </configuration>
-            </plugin>
-
             <plugin>
                 <groupId>com.github.eirslett</groupId>
                 <artifactId>frontend-maven-plugin</artifactId>
@@ -159,7 +137,7 @@
                             <goal>copy-resources</goal>
                         </goals>
                         <configuration>
-                            <outputDirectory>target/classes/theme/keycloak.v2/admin/resources</outputDirectory>
+                            <outputDirectory>target/classes/theme/primesign.v2/admin/resources</outputDirectory>
                             <resources>
                                 <resource>
                                     <directory>../build</directory>
@@ -195,8 +173,8 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <file>target/classes/theme/keycloak.v2/admin/resources/index.html</file>
-                    <outputFile>target/classes/theme/keycloak.v2/admin/index.ftl</outputFile>
+                    <file>target/classes/theme/primesign.v2/admin/resources/index.html</file>
+                    <outputFile>target/classes/theme/primesign.v2/admin/index.ftl</outputFile>
                     <regex>false</regex>
                     <replacements>
                         <replacement>
