@@ -260,6 +260,9 @@ export default function ClientDetails() {
         stringToMultiline(client.attributes["post.logout.redirect.uris"])
       );
     }
+    if (client.attributes?.["accountId"]) {
+      form.setValue("attributes.accountId", client.attributes["accountId"]);
+    }
     Object.entries(client.attributes || {})
       .filter(([key]) => key.startsWith("saml.server.signature"))
       .map(([key, value]) =>

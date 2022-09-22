@@ -93,6 +93,25 @@ export const ClientDescription = ({
         />
       </FormGroup>
       <FormGroup
+        labelIcon={
+          <HelpItem
+            helpText="clients-help:accountId"
+            fieldLabelId="accountId"
+          />
+        }
+        label={t("common:accountId")}
+        fieldId="accountId"
+        validated={ValidatedOptions.default}
+      >
+        <KeycloakTextInput
+          ref={register()}
+          type="text"
+          id="accountId"
+          name="attributes.accountId"
+          validated={ValidatedOptions.default}
+        />
+      </FormGroup>
+      <FormGroup
         label={t("clients:alwaysDisplayInConsole")}
         labelIcon={
           <HelpItem
