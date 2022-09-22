@@ -9,6 +9,7 @@ import { PasswordPolicy } from "./PasswordPolicy";
 import { OtpPolicy } from "./OtpPolicy";
 import { WebauthnPolicy } from "./WebauthnPolicy";
 import { KeycloakSpinner } from "../../components/keycloak-spinner/KeycloakSpinner";
+import { SmsPolicy } from "./SmsPolicy";
 
 export const Policies = () => {
   const { t } = useTranslation("authentication");
@@ -69,6 +70,13 @@ export const Policies = () => {
         title={<TabTitleText>{t("webauthnPasswordlessPolicy")}</TabTitleText>}
       >
         <WebauthnPolicy realm={realm} realmUpdated={setRealm} isPasswordLess />
+      </Tab>
+      <Tab
+        id="smsPolicy"
+        eventKey={5}
+        title={<TabTitleText>{t("sms-policy:title")}</TabTitleText>}
+      >
+        <SmsPolicy realm={realm} realmUpdated={setRealm} />
       </Tab>
     </Tabs>
   );
