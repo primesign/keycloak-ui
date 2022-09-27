@@ -55,6 +55,7 @@ type AdminEventSearchForm = {
   authUser: string;
   authRealm: string;
   authIpAddress: string;
+  sessionId: string;
 };
 
 const defaultValues: AdminEventSearchForm = {
@@ -67,6 +68,7 @@ const defaultValues: AdminEventSearchForm = {
   authUser: "",
   authRealm: "",
   authIpAddress: "",
+  sessionId: "",
 };
 
 const DisplayDialog: FunctionComponent<DisplayDialogProps> = ({
@@ -119,6 +121,7 @@ export const AdminEvents = () => {
     authUser: t("userId"),
     authRealm: t("realm"),
     authIpAddress: t("ipAddress"),
+    sessionId: t("sessionId"),
   };
 
   const {
@@ -441,6 +444,19 @@ export const AdminEvents = () => {
                   data-testid="dateTo-searchField"
                 />
               </FormGroup>
+              <FormGroup
+                label={t("sessionId")}
+                fieldId="kc-sessionId"
+                className="keycloak__events_search__form_label"
+              >
+                <KeycloakTextInput
+                  ref={register()}
+                  type="text"
+                  id="kc-sessionId"
+                  name="sessionId"
+                  data-testid="sessionId-searchField"
+                />
+              </FormGroup>
               <ActionGroup>
                 <Button
                   variant={"primary"}
@@ -570,6 +586,10 @@ export const AdminEvents = () => {
           },
         ]}
         columns={[
+          {
+            name: "sessionId",
+            displayKey: "events:sessionId",
+          },
           {
             name: "time",
             displayKey: "events:time",

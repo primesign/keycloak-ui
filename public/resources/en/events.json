@@ -32,5 +32,6 @@
   "value": "Value",
   "representation": "Representation",
   "noUserDetails": "No user details",
-  "resetBtn": "Reset"
+  "resetBtn": "Reset",
+  "sessionId": "Session ID"
 }
