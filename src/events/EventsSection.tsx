@@ -56,6 +56,7 @@ type UserEventSearchForm = {
   dateTo: string;
   user: string;
   type: EventType[];
+  sessionId: string;
 };
 
 const defaultValues: UserEventSearchForm = {
@@ -64,6 +65,7 @@ const defaultValues: UserEventSearchForm = {
   dateTo: "",
   user: "",
   type: [],
+  sessionId: "",
 };
 
 const StatusRow = (event: EventRepresentation) =>
@@ -109,6 +111,7 @@ export default function EventsSection() {
     dateTo: t("dateTo"),
     user: t("userId"),
     type: t("eventType"),
+    sessionId: t("sessionId"),
   };
 
   const {
@@ -351,6 +354,19 @@ export default function EventsSection() {
                   data-testid="dateTo-searchField"
                 />
               </FormGroup>
+              <FormGroup
+                label={t("sessionId")}
+                fieldId="kc-sessionId"
+                className="keycloak__events_search__form_label"
+              >
+                <KeycloakTextInput
+                  ref={register()}
+                  type="text"
+                  id="kc-sessionId"
+                  name="sessionId"
+                  data-testid="sessionId-searchField"
+                />
+              </FormGroup>
               <ActionGroup>
                 <Button
                   variant={"primary"}
@@ -465,6 +481,10 @@ export default function EventsSection() {
                 ariaLabelKey="events:title"
                 toolbarItem={userEventSearchFormDisplay()}
                 columns={[
+                  {
+                    name: "sessionId",
+                    displayKey: "events:sessionId",
+                  },
                   {
                     name: "time",
                     displayKey: "events:time",
